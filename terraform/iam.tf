@@ -19,7 +19,7 @@ module "allow_eks_access_iam_policy" {
   })
 }
 
-# IAM role used to access the cluster
+# IAM role to access the cluster
 module "eks_admins_iam_role" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role"
   version = "5.30.0"
@@ -28,7 +28,7 @@ module "eks_admins_iam_role" {
   create_role       = true
   role_requires_mfa = false
 
-# Attach IAM policy created aboveI
+# Attach IAM policy created above
   custom_role_policy_arns = [module.allow_eks_access_iam_policy.arn]
 
   trusted_role_arns = [
@@ -69,7 +69,7 @@ module "allow_assume_eks_admins_iam_policy" {
   })
 }
 
-# IAM group with the previous policy and add the new user in this group
+# IAM group with the previous policy created and add the new user in this group
 module "eks_admins_iam_group" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-group-with-policies"
   version = "5.30.0"
