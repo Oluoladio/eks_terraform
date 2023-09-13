@@ -53,7 +53,7 @@ module "eks" {
     }
   }
 
-# To add the eks-admin IAM role to the EKS cluster  update the aws-auth configmap
+# To add the eks-admin IAM role to the aws-auth configmap
   manage_aws_auth_configmap = true
   aws_auth_roles = [
     {
@@ -68,7 +68,7 @@ module "eks" {
   }
 }
 
-# Access Kubernetes API using terraform module and modify aws-auth configmap
+# Access Kubernetes API using terraform module
 
 # https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2009
 data "aws_eks_cluster" "default" {
